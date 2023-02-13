@@ -16,7 +16,14 @@
         <appender-ref ref="CONSOLE_JSON"/>
     </root>
 </springProfile>
+
+    <!-- For debugging and diagnostics, turn on request/response logging on the transport level -->
+    <!--<logger name="org.springframework.data.elasticsearch.client.WIRE" level="trace"/>-->
+<springProfile name="!dev">
+    <include resource="org.springframework.data.elasticsearch.client.WIRE"/>
+    <root level="TRACE">
+        <appender-ref ref="CONSOLE"/>
+    </root>
+</springProfile>
 </configuration>
 
-        <!-- For debugging and diagnostics, turn on request/response logging on the transport level -->
-        <!--<logger name="org.springframework.data.elasticsearch.client.WIRE" level="trace"/>-->
